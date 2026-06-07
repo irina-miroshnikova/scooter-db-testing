@@ -1,124 +1,98 @@
 # Scooter Service Testing Project
 
-Проект по тестированию сервиса аренды самокатов:  
-проверка данных в базе данных и автоматизация API-сценариев.
+This repository contains SQL checks and basic API automated tests for a scooter rental service training project.
 
-Репозиторий содержит SQL-запросы для проверки корректности данных в БД  
-и автотесты API, написанные на Python с использованием pytest.
+The project demonstrates practical QA skills in database testing, SQL query writing, API test automation, and structured test documentation.
 
----
+## What is tested
 
-## Содержание проекта
+* Order data in the database
+* Order status validation
+* Data consistency checks
+* API order creation
+* API order retrieval by track number
+* Basic positive API scenarios
 
-- Проверка данных заказов в базе данных (PostgreSQL)
-- SQL-запросы для анализа статусов заказов
-- Автоматизация API-тестирования:
-  - создание заказа
-  - получение заказа по трек-номеру
-- Настроенное виртуальное окружение
-- Структурированный репозиторий (gitignore, README)
+## Tools and Technologies
 
-Структура репозитория
-
-```
-scooter-db-testing/
-├── api-tests/                  # API автотесты
-│   ├── configuration.py        # Конфигурация эндпоинтов
-│   ├── data.py                 # Тестовые данные
-│   ├── sender_stand_request.py # Вспомогательные методы API
-│   ├── test_order_by_track.py  # API автотесты
-│   └── requirements.txt        # Зависимости
-│
-├── sql/                        # SQL-запросы
-│   ├── task_1_orders_in_delivery.sql
-│   └── task_2_order_statuses.sql
-│
-├── results/                    # Результаты SQL-запросов
-│   └── task_1_result.md
-│
-├── screenshots/                # Скриншоты запуска автотестов
-│   └── api_test_passed.png
-│
-├── .gitignore
-└── README.md
-```
----
-
-## Работа с базой данных
-
-### В рамках проекта выполнены проверки данных заказов в PostgreSQL:
-
-```bash
-* анализ заказов в статусе `inDelivery`
-* проверка корректности вычисления статусов заказов
-
-SQL-запросы находятся в папке `sql/`,
-результаты выполнения — в папке `results/`.
-
-```
-
-## Автоматизация API
-
-### Реализованы автотесты, покрывающие следующие проверки:
-
-```bash
-* успешное создание заказа и получение трек-номера
-* получение заказа по трек-номеру с проверкой ответа сервера (**HTTP 200**)
-
-Вспомогательные методы вынесены в отдельный модуль, тесты содержат только проверки.
-```
-
-### Используемые технологии
-
-```bash
-* Python 3
+* SQL
+* PostgreSQL
+* Python
 * pytest
 * requests
+* Git / GitHub
+
+## Project Structure
+
+```text
+scooter-db-testing/
+├── api-tests/                 # API automated tests
+│   ├── configuration.py        # Base URL and API endpoints
+│   ├── data.py                 # Test data
+│   ├── sender_stand_request.py # API request helper functions
+│   ├── test_order_by_track.py  # API test for order retrieval
+│   └── requirements.txt        # Project dependencies
+├── sql/                       # SQL queries
+│   ├── task_1_orders_in_delivery.sql
+│   └── task_2_order_statuses.sql
+├── results/                   # SQL query results
+│   └── task_1_result.md
+├── screenshots/               # Test run screenshots
+│   └── api_test_passed.png
+├── README.md                  # Project documentation
+└── .gitignore                 # Ignored local and generated files
 ```
 
-### Запуск автотестов
+## SQL Testing Scope
 
-1. Создать виртуальное окружение:
+The SQL part of the project includes database-level checks for scooter order data.
+
+Main checks:
+
+* Orders currently in delivery
+* Order status calculation
+* Data filtering and validation
+* Result verification based on business logic
+
+## API Testing Scope
+
+The API part of the project includes basic automated tests for order-related functionality.
+
+Main checks:
+
+* Create an order via API
+* Get order information by track number
+* Validate response status code
+* Validate response body
+
+## How to Run API Tests
+
+Go to the API tests directory:
 
 ```bash
-python -m venv .venv
+cd api-tests
 ```
 
-2. Активировать окружение:
+Install dependencies:
 
 ```bash
-.venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
-3. Установить зависимости:
+Run tests:
 
 ```bash
-pip install -r api-tests/requirements.txt
+pytest
 ```
 
-4. Запустить тесты:
+## QA Focus
 
-```bash
-pytest -v
-```
+This project focuses on combining database checks and API testing to verify application behavior from different levels.
 
----
+It demonstrates the ability to check not only the user-facing behavior, but also the data layer behind the functionality.
 
-## Результат
-```bash
-* SQL-запросы выполняются корректно
-* API-автотесты проходят успешно
-* Проект оформлен в виде репозитория, готового для демонстрации
-```
----
+## Notes
 
-## Автор
+This is a training QA project.
 
-```bash
-Ирина
-QA Engineer (Manual + API Testing)
-
-```
-
----
-
+No real credentials, tokens, or confidential data are stored in this repository.
